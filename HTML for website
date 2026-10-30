@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Summit Strength & Conditioning</title>
+
+<style>
+:root {
+    --dark: #10191d;
+    --dark-light: #202a2e;
+    --gold: #a9986b;
+    --gold-light: #c0ae7e;
+    --white: #ffffff;
+    --light: #f6f6f4;
+    --text: #263039;
+    --muted: #667078;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* NAVIGATION */
+
+header {
+    background: var(--dark);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    font-size: 36px;
+    color: var(--gold-light);
+}
+
+.logo-text strong {
+    display: block;
+    letter-spacing: 5px;
+    font-size: 17px;
+}
+
+.logo-text span {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    list-style: none;
+}
+
+.nav-links a {
+    font-size: 14px;
+    transition: color .3s;
+}
+
+.nav-links a:hover {
+    color: var(--gold-light);
+}
+
+.btn {
+    display: inline-block;
+    background: var(--gold);
+    color: white;
+    padding: 13px 26px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    background: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 470px;
+    display: flex;
+    align-items: center;
+    color: white;
+    background:
+        linear-gradient(90deg,
+        rgba(8,17,21,.95) 0%,
+        rgba(8,17,21,.72) 48%,
+        rgba(8,17,21,.12) 100%),
+        url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=2000&q=85")
+        center 45% / cover no-repeat;
+}
+
+.hero-content {
+    max-width: 550px;
+    padding: 75px 0;
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 5vw, 56px);
+    line-height: 1.12;
+    font-weight: 500;
+    margin-bottom: 18px;
+}
+
+.hero p {
+    max-width: 420px;
+    color: #e2e4e4;
+    font-size: 15px;
+    margin-bottom: 27px;
+}
+
+/* BENEFITS */
+
+.benefits {
+    background: var(--light);
+    padding: 38px 0;
+}
+
+.benefit-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.benefit {
+    text-align: center;
+    padding: 10px 25px;
+    border-right: 1px solid #dededb;
+}
+
+.benefit:last-child {
+    border-right: none;
+}
+
+.benefit-icon {
+    font-size: 32px;
+    color: var(--gold);
+    margin-bottom: 8px;
+}
+
+.benefit h3 {
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+.benefit p {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+/* SERVICES */
+
+.services {
+    padding: 75px 0;
+    background: white;
+}
+
+.services-layout {
+    display: grid;
+    grid-template-columns: 1.8fr repeat(4, 1fr);
+    gap: 18px;
+    align-items: stretch;
+}
+
+.section-label {
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.services-intro h2 {
+    font-size: 30px;
+    line-height: 1.2;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.services-intro p {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 22px;
+}
+
+.service-card {
+    border: 1px solid #e6e6e4;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: .3s;
+    background: white;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,.08);
+}
+
+.service-card img {
+    width: 100%;
+    height: 115px;
+    object-fit: cover;
+    display: block;
+}
+
+.service-content {
+    padding: 14px;
+}
+
+.service-content h3 {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.service-content p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-bottom: 14px;
+}
+
+.learn-more {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.learn-more:hover {
+    color: var(--gold);
+}
+
+/* WHY CHOOSE US */
+
+.why-us {
+    color: white;
+    padding: 55px 0;
+    background:
+        linear-gradient(90deg,
+        rgba(12,24,29,.97),
+        rgba(12,24,29,.76),
+        rgba(12,24,29,.15)),
+        url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=85")
+        center / cover no-repeat;
+}
+
+.why-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    gap: 45px;
+}
+
+.why-us h2 {
+    font-size: 30px;
+    line-height: 1.25;
+    font-weight: 500;
+}
+
+.why-list {
+    list-style: none;
+    border-left: 1px solid var(--gold);
+    padding-left: 45px;
+}
+
+.why-list li {
+    margin: 12px 0;
+    font-size: 14px;
+}
+
+.why-list li::before {
+    content: "✓";
+    color: var(--gold-light);
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+/* CTA */
+
+.cta {
+    background: var(--light);
+    padding: 30px 0;
+    text-align: center;
+}
+
+.cta-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.cta h2 {
+    font-size: 21px;
+    margin-bottom: 3px;
+}
+
+.cta p {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+/* FOOTER */
+
+footer {
+    background: var(--dark);
+    color: white;
+    padding: 30px 0 15px;
+}
+
+.footer-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #354044;
+}
+
+.footer-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+    font-size: 12px;
+}
+
+.footer-links a:hover {
+    color: var(--gold-light);
+}
+
+.socials {
+    display: flex;
+    gap: 18px;
+}
+
+.socials a {
+    font-size: 15px;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 14px;
+    font-size: 10px;
+    color: #b9c0c2;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+    .services-layout {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .services-intro {
+        grid-column: 1 / -1;
+        max-width: 600px;
+        margin-bottom: 15px;
+    }
+
+    .service-card img {
+        height: 180px;
+    }
+}
+
+@media (max-width: 700px) {
+    .navbar {
+        flex-wrap: wrap;
+        padding: 12px 0;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        gap: 0;
+        padding-top: 15px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+        padding: 12px 0;
+        border-top: 1px solid #354044;
+    }
+
+    .nav-button {
+        display: none;
+    }
+
+    .hero {
+        min-height: 520px;
+        background-position: 60% center;
+    }
+
+    .hero-content {
+        padding: 65px 0;
+    }
+
+    .benefit-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .benefit {
+        padding: 20px 12px;
+        border-right: none;
+        border-bottom: 1px solid #dededb;
+    }
+
+    .services-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .services-intro {
+        grid-column: auto;
+    }
+
+    .service-card img {
+        height: 200px;
+    }
+
+    .why-layout {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .why-list {
+        padding-left: 20px;
+    }
+
+    .cta-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .footer-top {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<header>
+    <div class="container navbar">
+
+        <a href="#home" class="logo">
+            <div class="logo-icon">⌁</div>
+            <div class="logo-text">
+                <strong>SUMMIT</strong>
+                <span>STRENGTH & CONDITIONING</span>
+            </div>
+        </a>
+
+        <button class="menu-toggle"
+                aria-label="Toggle navigation"
+                aria-expanded="false"
+                onclick="toggleMenu()">☰</button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <a href="#contact" class="btn nav-button">Get Started</a>
+
+    </div>
+</header>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+    <div class="container">
+        <div class="hero-content">
+
+            <div class="eyebrow">
+                STRONGER &nbsp; • &nbsp; HEALTHIER &nbsp; • &nbsp; MORE CAPABLE
+            </div>
+
+            <h1>Strength & Conditioning<br>for Real Life</h1>
+
+            <p>
+                Personalized training programs designed to build
+                strength, improve performance, and help you reach
+                your goals — in and out of the gym.
+            </p>
+
+            <a href="#services" class="btn">
+                Start Your Journey &nbsp; →
+            </a>
+
+        </div>
+    </div>
+</section>
+
+<!-- BENEFITS -->
+
+<section class="benefits">
+    <div class="container benefit-grid">
+
+        <div class="benefit">
+            <div class="benefit-icon">🏋</div>
+            <h3>Build Strength</h3>
+            <p>Increase muscle, improve power, and move better.</p>
+        </div>
+
+        <div class="benefit">
+            <div class="benefit-icon">🏃</div>
+            <h3>Boost Performance</h3>
+            <p>Train for sport, life, and long-term results.</p>
+        </div>
+
+        <div class="benefit">
+            <div class="benefit-icon">♡</div>
+            <h3>Improve Health</h3>
+            <p>Enhance mobility, endurance, and overall well-being.</p>
+        </div>
+
+        <div class="benefit">
+            <div class="benefit-icon">⌁</div>
+            <h3>Reach Your Goals</h3>
+            <p>Get the support, structure, and expertise you need.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- SERVICES -->
+
+<section class="services" id="services">
+    <div class="container services-layout">
+
+        <div class="services-intro">
+            <div class="section-label">Our Services</div>
+
+            <h2>Training Programs<br>That Work for You</h2>
+
+            <p>
+                Whether you're an athlete, a busy professional,
+                or just starting your fitness journey, we offer
+                customized programs to fit your needs and help
+                you get stronger, faster, and healthier.
+            </p>
+
+            <a href="#contact" class="btn">
+                View All Services &nbsp; →
+            </a>
+        </div>
+
+        <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80"
+                 alt="Personal training in a gym">
+
+            <div class="service-content">
+                <h3>Personal Training</h3>
+                <p>One-on-one coaching for personalized results.</p>
+                <a href="#contact" class="learn-more">Learn More →</a>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?auto=format&fit=crop&w=600&q=80"
+                 alt="Athletic performance training">
+
+            <div class="service-content">
+                <h3>Athletic Performance</h3>
+                <p>Sport-specific training to elevate your game.</p>
+                <a href="#contact" class="learn-more">Learn More →</a>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=600&q=80"
+                 alt="Group fitness coaching">
+
+            <div class="service-content">
+                <h3>Small Group Training</h3>
+                <p>Get stronger together with expert guidance.</p>
+                <a href="#contact" class="learn-more">Learn More →</a>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80"
+                 alt="Gym equipment">
+
+            <div class="service-content">
+                <h3>Online Coaching</h3>
+                <p>Flexible, convenient training from anywhere.</p>
+                <a href="#contact" class="learn-more">Learn More →</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ABOUT / WHY CHOOSE US -->
+
+<section class="why-us" id="about">
+    <div class="container why-layout">
+
+        <div>
+            <div class="eyebrow">Why Choose Us</div>
+            <h2>Expert Coaching.<br>Lasting Results.</h2>
+        </div>
+
+        <ul class="why-list">
+            <li>Certified and experienced trainers</li>
+            <li>Programs tailored to your unique goals</li>
+            <li>A supportive, results-driven community</li>
+        </ul>
+
+    </div>
+</section>
+
+<!-- TESTIMONIALS / CTA -->
+
+<section class="cta" id="testimonials">
+    <div class="container cta-content">
+
+        <div>
+            <h2>Ready to Get Started?</h2>
+            <p>Take the first step toward a stronger, healthier you.</p>
+        </div>
+
+        <a href="#contact" class="btn">Contact Us &nbsp; →</a>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer id="contact">
+    <div class="container">
+
+        <div class="footer-top">
+
+            <a href="#home" class="logo">
+                <div class="logo-icon">⌁</div>
+                <div class="logo-text">
+                    <strong>SUMMIT</strong>
+                    <span>STRENGTH & CONDITIONING</span>
+                </div>
+            </a>
+
+            <ul class="footer-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="mailto:info@summitstrength.com">Contact</a></li>
+            </ul>
+
+            <div class="socials">
+                <a href="#" aria-label="Instagram">Instagram</a>
+                <a href="#" aria-label="Facebook">Facebook</a>
+                <a href="#" aria-label="YouTube">YouTube</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 Summit Strength & Conditioning. All rights reserved.</p>
+            <p>Stronger Today. Greater Tomorrow.</p>
+        </div>
+
+    </div>
+</footer>
+
+<script>
+function toggleMenu() {
+    const menu = document.getElementById("navLinks");
+    const button = document.querySelector(".menu-toggle");
+
+    menu.classList.toggle("active");
+
+    button.setAttribute(
+        "aria-expanded",
+        menu.classList.contains("active")
+    );
+}
+
+// Close mobile navigation after clicking a link
+document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+        document.getElementById("navLinks").classList.remove("active");
+        document.querySelector(".menu-toggle")
+            .setAttribute("aria-expanded", "false");
+    });
+});
+</script>
+
+</body>
+</html>
